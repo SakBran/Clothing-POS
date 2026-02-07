@@ -52,16 +52,16 @@ const Dashboard = () => {
 
     useEffect(() => {
         const dailyRequestAPI = async () => {
-            const resp = await axiosInstance.get('Dashboard');
-            if (resp.status < 200 || resp.status >= 300) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!'
-                });
-            }
-            const tempData = await resp.data;
-            setData(tempData);
+            // const resp = await axiosInstance.get('Dashboard');
+            // if (resp.status < 200 || resp.status >= 300) {
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Oops...',
+            //         text: 'Something went wrong!'
+            //     });
+            // }
+            // const tempData = await resp.data;
+            // setData(tempData);
         };
         dailyRequestAPI();
     }, []);
@@ -74,11 +74,11 @@ const Dashboard = () => {
     };
 
     const formatDateTime = (value?: string | null) => {
-    if (!value || !value.includes('T')) return ' ';
-    const [date, time] = value.split('T');
-    const formattedTime = time?.split('.')[0]; 
-    return `${date} ${formattedTime}`;
-};
+        if (!value || !value.includes('T')) return ' ';
+        const [date, time] = value.split('T');
+        const formattedTime = time?.split('.')[0];
+        return `${date} ${formattedTime}`;
+    };
 
     return (
         <div className="grid">
@@ -149,8 +149,7 @@ const Dashboard = () => {
                     <DataTable value={data?.sentList} rows={5} paginator responsiveLayout="scroll">
                         <Column field="ceirid" header="CEIR ID" sortable style={{ width: '35%' }} />
                         {/* <Column field="sentDatetime" header="Sent Datetime" sortable style={{ width: '35%' }} body={(data) => formatCurrency(data.price)} /> */}
-                        <Column field="sentDatetime" header="Sent Datetime" sortable style={{ width: '35%' }} body={(rowData) => formatDateTime(rowData.sentDatetime)}
-                        />
+                        <Column field="sentDatetime" header="Sent Datetime" sortable style={{ width: '35%' }} body={(rowData) => formatDateTime(rowData.sentDatetime)} />
                     </DataTable>
                 </div>
             </div>

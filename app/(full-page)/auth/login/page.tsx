@@ -36,7 +36,7 @@ const LoginPage = () => {
             });
 
             try {
-                const resp = await axiosInstance.post('auth/Login', data);
+                const resp = await axiosInstance.post('Auth/Login', data);
                 const temp = await resp.data;
 
                 if (!temp || !temp.token) {
@@ -102,32 +102,32 @@ const LoginPage = () => {
                     <div className="w-full surface-card py-8 px-5 sm:px-8" style={{ borderRadius: '53px' }}>
                         <div className="text-center mb-5">
                             <img src={`/layout/images/logo.png`} alt="Sakai logo" className="mb-5 w-6rem flex-shrink-0" />
-                            <div className="text-900 text-3xl font-medium mb-3">Welcome, User!</div>
-                            <span className="text-600 font-medium">Sign in to continue</span>
+                            <div className="text-900 text-3xl font-medium mb-3">မင်္ဂလာပါ</div>
+                            <span className="text-600 font-medium">ဤဝန်ဆောင်မှုကို ဆက်လက်အသုံးပြုရန် အကောင့်ဝင်ရန် လိုအပ်ပါသည်။</span>
                         </div>
 
                         <div>
                             <label htmlFor="email1" className="block text-900 text-xl font-medium mb-2">
-                                Username
+                                အသုံးပြုသူအမည်
                             </label>
-                            <InputText id="email1" type="text" placeholder="Username" value={username} onChange={(e) => setUserName(e.target.value)} className="w-full md:w-30rem mb-5" style={{ padding: '1rem' }} />
+                            <InputText id="email1" type="text" placeholder="အသုံးပြုသူအမည်" value={username} onChange={(e) => setUserName(e.target.value)} className="w-full md:w-30rem mb-5" style={{ padding: '1rem' }} />
 
                             <label htmlFor="password1" className="block text-900 font-medium text-xl mb-2">
-                                Password
+                                စကားဝှက်
                             </label>
-                            <InputText id="password1" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="w-full md:w-30rem mb-5" style={{ padding: '1rem' }} />
+                            <InputText id="password1" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="စကားဝှက်" className="w-full md:w-30rem mb-5" style={{ padding: '1rem' }} />
                             {/* <Password inputId="password1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" toggleMask className="w-full mb-5" inputClassName="w-full p-3 md:w-30rem"></Password> */}
 
                             <div className="flex align-items-center justify-content-between mb-5 gap-5">
                                 <div className="flex align-items-center">
                                     <Checkbox inputId="rememberme1" checked={checked} onChange={(e) => setChecked(e.checked ?? false)} className="mr-2"></Checkbox>
-                                    <label htmlFor="rememberme1">Remember me</label>
+                                    <label htmlFor="rememberme1">အချက်အလက်သိမ်းထားမည်</label>
                                 </div>
                                 {/* <a className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>
                                     Forgot password?
                                 </a> */}
                             </div>
-                            <Button label="Sign In" className="w-full p-3 text-xl" onClick={() => handleLogin()}></Button>
+                            <Button label="အကောင့်ဝင်မည်" className="w-full p-3 text-xl" onClick={() => handleLogin()}></Button>
                         </div>
                     </div>
                 </div>

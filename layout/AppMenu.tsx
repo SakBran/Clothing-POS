@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import React, { useContext } from 'react';
 import AppMenuitem from './AppMenuitem';
 import { LayoutContext } from './context/layoutcontext';
@@ -22,8 +20,9 @@ const AppMenu = () => {
         },
         {
             label: 'IRD-CEIR ID List',
-            items: [{ label: 'CEIR ID List', icon: 'pi pi-fw pi-server', to: '/CEIRD' },
-                    {label: 'Manual List', icon: 'pi pi-fw pi-server', to: '/Manual' }
+            items: [
+                { label: 'CEIR ID List', icon: 'pi pi-fw pi-server', to: '/CEIRD' },
+                { label: 'Manual List', icon: 'pi pi-fw pi-server', to: '/Manual' }
             ]
         },
         {
@@ -57,10 +56,11 @@ const AppMenu = () => {
         }
     ];
     const InchargeAndOperator: AppMenuItem[] = [
-          {
+        {
             label: 'IRD-CEIR ID List',
-            items: [{ label: 'CEIR ID List', icon: 'pi pi-fw pi-server', to: '/CEIRD' },
-                    {label: 'Manual List', icon: 'pi pi-fw pi-server', to: '/Manual' }
+            items: [
+                { label: 'CEIR ID List', icon: 'pi pi-fw pi-server', to: '/CEIRD' },
+                { label: 'Manual List', icon: 'pi pi-fw pi-server', to: '/Manual' }
             ]
         },
         {
@@ -84,11 +84,86 @@ const AppMenu = () => {
         }
     ];
 
+    const Management: AppMenuItem[] = [
+        {
+            label: 'Branch Management',
+            icon: 'pi pi-fw pi-building',
+            items: [
+                { label: 'Branch List', icon: 'pi pi-fw pi-list', to: '/branch/list' },
+                { label: 'Add New Branch', icon: 'pi pi-fw pi-plus-circle', to: '/branch/new' }
+            ]
+        },
+        {
+            label: 'Brand Management',
+            icon: 'pi pi-fw pi-tags',
+            items: [
+                { label: 'Brand List', icon: 'pi pi-fw pi-tag', to: '/brand/list' },
+                { label: 'Add New Brand', icon: 'pi pi-fw pi-plus-circle', to: '/brand/new' }
+            ]
+        },
+        {
+            label: 'Category Management',
+            icon: 'pi pi-fw pi-sitemap',
+            items: [
+                { label: 'Category List', icon: 'pi pi-fw pi-list', to: '/category/list' },
+                { label: 'Add New Category', icon: 'pi pi-fw pi-plus-circle', to: '/category/new' }
+            ]
+        },
+        {
+            label: 'Product Management',
+            icon: 'pi pi-fw pi-box',
+            items: [
+                { label: 'Product List', icon: 'pi pi-fw pi-list', to: '/product/list' },
+                { label: 'Add New Product', icon: 'pi pi-fw pi-plus-circle', to: '/product/new' }
+            ]
+        },
+        {
+            label: 'Product Variant Management',
+            icon: 'pi pi-fw pi-clone',
+            items: [
+                { label: 'Variant List', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
+                { label: 'Add New Variant', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' }
+            ]
+        },
+        {
+            label: 'Purchase Management',
+            icon: 'pi pi-fw pi-shopping-cart',
+            items: [
+                { label: 'Purchase Orders', icon: 'pi pi-fw pi-list', to: '/purchase-order/list' },
+                { label: 'New Purchase Order', icon: 'pi pi-fw pi-plus-circle', to: '/purchase-order/new' }
+            ]
+        },
+        {
+            label: 'Sales Management',
+            icon: 'pi pi-fw pi-wallet',
+            items: [
+                { label: 'Sales List', icon: 'pi pi-fw pi-list', to: '/sale/list' },
+                { label: 'New Sale', icon: 'pi pi-fw pi-plus-circle', to: '/sale/new' }
+            ]
+        },
+        {
+            label: 'Stock Management',
+            icon: 'pi pi-fw pi-database',
+            items: [
+                { label: 'Stock List', icon: 'pi pi-fw pi-list', to: '/stock/list' },
+                { label: 'Stock Movements', icon: 'pi pi-fw pi-arrows-h', to: '/stock-movement/list' }
+            ]
+        },
+        {
+            label: 'Supplier Management',
+            icon: 'pi pi-fw pi-truck',
+            items: [
+                { label: 'Supplier List', icon: 'pi pi-fw pi-list', to: '/supplier/list' },
+                { label: 'Add New Supplier', icon: 'pi pi-fw pi-plus-circle', to: '/supplier/new' }
+            ]
+        }
+    ];
+
     const Permission = localStorage.getItem('permission');
     var model: AppMenuItem[] = [];
     if (Permission) {
         if (Permission == 'Administrator') {
-            model = [...Administrator];
+            model = [...Administrator, ...Management];
         } else {
             model = [...InchargeAndOperator];
         }
