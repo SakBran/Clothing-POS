@@ -136,7 +136,8 @@ export const BasicTable: React.FC<PropsType> = ({
                                         {data}
                                         {/* <TableAction id={row['id']} /> */}
 
-                                        {actionComponent && Permission !== 'Operator' ? actionComponent({ id: row['id'] }) : null}
+                                        {/* {actionComponent && Permission !== 'Operator' ? actionComponent({ id: row['id'] }) : null} */}
+                                        {actionComponent && Permission !== 'Operator' && <>{React.createElement(actionComponent, { id: row['id'] })}</>}
                                     </tr>
                                 );
                             })}
