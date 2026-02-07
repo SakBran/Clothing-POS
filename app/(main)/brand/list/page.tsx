@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Swal from 'sweetalert2';
-const API_Variable = 'Brand';
-const Next_Link_Variable = 'brand';
+import { API_Variable, Next_Link_Variable, TableColumns } from '../constant';
+
 type Props = {
     id: string;
 };
@@ -25,7 +25,7 @@ const TableAction = ({ id }: Props) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 const deleteAction = async () => {
-                    const response = await Delete('Brand', id);
+                    const response = await Delete(API_Variable, id);
                     Swal.fire('Deleted!', 'Data is successfully deleted', 'success');
                     router.refresh();
                 };
@@ -68,7 +68,7 @@ const page = () => {
             <div className="card">
                 <BasicTable
                     api={API_Variable}
-                    displayData={['brandName', 'isActive', 'id']}
+                    displayData={TableColumns}
                     fetch={async (url) => {
                         const response = await Get(url);
                         return transformData(response);

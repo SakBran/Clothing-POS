@@ -7,15 +7,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { classNames } from 'primereact/utils';
 import { Post, Put } from '@/app/_services/BasicHttpServices';
 import Swal from 'sweetalert2';
+import { API_Variable, Message_Variable, FormData } from '../constant';
 
-const API_Variable = 'Brand';
-const Message_Variable = 'Brand';
 //Replace this for your actual data model
-export interface FormData {
-    brandName: string;
-    isActive: string;
-    id: string;
-}
 
 const isActives = [
     { label: 'Active', value: '0' },
