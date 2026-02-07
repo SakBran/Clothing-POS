@@ -8,6 +8,9 @@ import { classNames } from 'primereact/utils';
 import { Post, Put } from '@/app/_services/BasicHttpServices';
 import Swal from 'sweetalert2';
 
+const API_Variable = 'Brand';
+const Message_Variable = 'Brand';
+//Replace this for your actual data model
 export interface FormData {
     brandName: string;
     isActive: string;
@@ -19,7 +22,7 @@ const isActives = [
     { label: 'In-Active', value: '1' }
 ];
 
-const BrandForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
+const DataEntryForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
     const {
         control,
         handleSubmit,
@@ -40,9 +43,9 @@ const BrandForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
         const processedData = async () => {
             let response;
             if (data && data.id) {
-                response = await Put(`Brand`, data.id, data);
+                response = await Put(API_Variable, data.id, data);
             } else {
-                response = await Post('Brand', data);
+                response = await Post(API_Variable, data);
             }
 
             if (!response) {
@@ -59,13 +62,13 @@ const BrandForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'User updated successfully'
+                    text: `${Message_Variable} updated successfully`
                 });
             } else {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'User created successfully'
+                    text: `${Message_Variable} created successfully`
                 });
             }
         };
@@ -79,12 +82,12 @@ const BrandForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
     return (
         <div className="p-fluid">
             <form onSubmit={handleSubmit(onSubmit)}>
+                {/* Start Geneate Form with AI, Use react-hook-form and Prime React and C# model */}
                 <div className="field">
                     <label htmlFor="brandName">Brand Name</label>
                     <Controller name="brandName" control={control} rules={{ required: 'Brand name is required.' }} render={({ field }) => <InputText id="brandName" {...field} className={classNames({ 'p-invalid': errors.brandName })} />} />
                     {getFormErrorMessage('brandName')}
                 </div>
-
                 <div className="field">
                     <label htmlFor="isActive">Active / Inactive</label>
                     <Controller
@@ -106,11 +109,11 @@ const BrandForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
                     />
                     {getFormErrorMessage('isActive')}
                 </div>
-
+                {/* End Geneate Form with AI, Use react-hook-form and Prime React and C# model */}
                 <Button type="submit" label="Submit" className="mt-2" />
             </form>
         </div>
     );
 };
 
-export default BrandForm;
+export default DataEntryForm;

@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Swal from 'sweetalert2';
-
+const API_Variable = 'Brand';
+const Next_Link_Variable = 'brand';
 type Props = {
     id: string;
 };
@@ -34,7 +35,7 @@ const TableAction = ({ id }: Props) => {
     };
     return (
         <td>
-            <Link href={`/brand/${id}`} style={{ cursor: 'pointer' }}>
+            <Link href={`/${Next_Link_Variable}/${id}`} style={{ cursor: 'pointer' }}>
                 Edit
             </Link>
             |
@@ -66,7 +67,7 @@ const page = () => {
         <div className="col-12 xl:col-12">
             <div className="card">
                 <BasicTable
-                    api={'Brand'}
+                    api={API_Variable}
                     displayData={['brandName', 'isActive', 'id']}
                     fetch={async (url) => {
                         const response = await Get(url);
