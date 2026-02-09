@@ -15,7 +15,8 @@ const AppMenu = () => {
             label: 'အသုံးပြုသူ စီမံခန့်ခွဲမှု',
             items: [
                 { label: 'အသုံးပြုသူများစာရင်း', icon: 'pi pi-fw pi-users', to: '/user/list' },
-                { label: 'အသုံးပြုသူအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-user-plus', to: '/user/new' }
+                { label: 'အသုံးပြုသူအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-user-plus', to: '/user/new' },
+                { label: 'အသုံးပြုသူ စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-user-plus', to: '/tutorial/user' }
             ]
         }
     ];
@@ -54,7 +55,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-building',
             items: [
                 { label: 'ဆိုင်ခွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/branch/list' },
-                { label: 'ဆိုင်ခွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/branch/new' }
+                { label: 'ဆိုင်ခွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/branch/new' },
+                { label: 'ဆိုင်ခွဲ စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/branch' }
             ]
         },
         {
@@ -62,7 +64,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-tags',
             items: [
                 { label: 'အမှတ်တံဆိပ်စာရင်း', icon: 'pi pi-fw pi-tag', to: '/brand/list' },
-                { label: 'အမှတ်တံဆိပ်အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/brand/new' }
+                { label: 'အမှတ်တံဆိပ်အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/brand/new' },
+                { label: 'အမှတ်တံဆိပ် စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/brand' }
             ]
         },
         {
@@ -70,7 +73,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-sitemap',
             items: [
                 { label: 'အမျိုးအစားစာရင်း', icon: 'pi pi-fw pi-list', to: '/category/list' },
-                { label: 'အမျိုးအစားအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/category/new' }
+                { label: 'အမျိုးအစားအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/category/new' },
+                { label: 'အမျိုးအစား စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/category' }
             ]
         },
         {
@@ -78,7 +82,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-box',
             items: [
                 { label: 'ပစ္စည်းစာရင်း', icon: 'pi pi-fw pi-list', to: '/product/list' },
-                { label: 'ပစ္စည်းအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product/new' }
+                { label: 'ပစ္စည်းအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product/new' },
+                { label: 'ပစ္စည်း စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/product' }
             ]
         },
         {
@@ -86,7 +91,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 { label: 'အမျိုးကွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
-                { label: 'အမျိုးကွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' }
+                { label: 'အမျိုးကွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' },
+                { label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/product-variant' }
             ]
         },
         {
@@ -94,7 +100,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-shopping-cart',
             items: [
                 { label: 'အဝယ်အမှာစာများ', icon: 'pi pi-fw pi-list', to: '/purchase-order/list' },
-                { label: 'အဝယ်အမှာစာအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/purchase-order/new' }
+                { label: 'အဝယ်အမှာစာအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/purchase-order/new' },
+                { label: 'အဝယ် စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/purchase-order' }
             ]
         },
         {
@@ -102,7 +109,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-wallet',
             items: [
                 { label: 'အရောင်းစာရင်း', icon: 'pi pi-fw pi-list', to: '/sale/list' },
-                { label: 'အရောင်းအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/sale/new' }
+                { label: 'အရောင်းအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/sale/new' },
+                { label: 'အရောင်း စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/sale' }
             ]
         },
         {
@@ -110,7 +118,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-database',
             items: [
                 { label: 'ကုန်လက်ကျန်စာရင်း', icon: 'pi pi-fw pi-list', to: '/stock/list' },
-                { label: 'ကုန်လက်ကျန်အပြောင်းလဲများ', icon: 'pi pi-fw pi-arrows-h', to: '/stock-movement/list' }
+                { label: 'ကုန်လက်ကျန်အပြောင်းလဲများ', icon: 'pi pi-fw pi-arrows-h', to: '/stock-movement/list' },
+                { label: 'ကုန်လက်ကျန် စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/stock' }
             ]
         },
         {
@@ -118,7 +127,8 @@ const AppMenu = () => {
             icon: 'pi pi-fw pi-truck',
             items: [
                 { label: 'ပေးသွင်းသူ/ဒိုင် စာရင်း', icon: 'pi pi-fw pi-list', to: '/supplier/list' },
-                { label: 'ပေးသွင်းသူ/ဒိုင် အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/supplier/new' }
+                { label: 'ပေးသွင်းသူ/ဒိုင် အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/supplier/new' },
+                { label: 'ပေးသွင်းသူ/ဒိုင် စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/supplier' }
             ]
         }
     ];
