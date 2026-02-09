@@ -10,7 +10,11 @@ const AppFooter = () => {
         <div className="layout-footer">
             <img src={`/layout/images/logo.png`} alt="Logo" height="35" className="mr-2" />
             Created & Maintained by
-            <span className="font-medium ml-2">SHWE DIGIT</span>
+            <span className="font-medium ml-2">
+                <a href="https://sakbran.github.io/" target="_blank">
+                    Sao Bran Aung
+                </a>
+            </span>
         </div>
     );
 };

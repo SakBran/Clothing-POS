@@ -12,46 +12,10 @@ const AppMenu = () => {
     // Operator – View only
     const Administrator: AppMenuItem[] = [
         {
-            label: 'Users',
+            label: 'အသုံးပြုသူ စီမံခန့်ခွဲမှု',
             items: [
-                { label: 'Users', icon: 'pi pi-fw pi-users', to: '/user/list' },
-                { label: 'Add new user', icon: 'pi pi-fw pi-user-plus', to: '/user/new' }
-            ]
-        },
-        {
-            label: 'IRD-CEIR ID List',
-            items: [
-                { label: 'CEIR ID List', icon: 'pi pi-fw pi-server', to: '/CEIRD' },
-                { label: 'Manual List', icon: 'pi pi-fw pi-server', to: '/Manual' }
-            ]
-        },
-        {
-            label: 'Operations',
-            items: [
-                { label: 'Sent List', icon: 'pi pi-fw pi-file-export', to: '/sentList' },
-                { label: 'Failed List', icon: 'pi pi-fw pi-ban', to: '/failedList' },
-                { label: 'Not Sent List', icon: 'pi pi-fw pi-wrench', to: '/notSentList' },
-                { label: 'Duplicate List', icon: 'pi pi-fw pi-clone', to: '/duplicateList' },
-                { label: 'Delete List', icon: 'pi pi-fw pi-trash', to: '/deleteList' }
-            ]
-        },
-        {
-            label: 'Logs',
-            items: [{ label: 'User Logs', icon: 'pi pi-fw pi-book', to: '/userLogs' }]
-        },
-        {
-            label: 'Report',
-            items: [
-                { label: 'Payment Report', icon: 'pi pi-fw pi-chart-bar', to: '/successfulPaymentReport' },
-                { label: 'Report 2', icon: 'pi pi-fw pi-chart-bar', to: '/2' },
-                { label: 'Report 3', icon: 'pi pi-fw pi-chart-bar', to: '/3' }
-            ]
-        },
-        {
-            label: 'Settings',
-            items: [
-                { label: 'System Setting', icon: 'pi pi-fw pi-cog', to: '/setting/list' },
-                { label: 'Add new Setting', icon: 'pi pi-fw pi-plus-circle', to: '/setting/new' }
+                { label: 'အသုံးပြုသူများစာရင်း', icon: 'pi pi-fw pi-users', to: '/user/list' },
+                { label: 'အသုံးပြုသူအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-user-plus', to: '/user/new' }
             ]
         }
     ];
@@ -86,75 +50,75 @@ const AppMenu = () => {
 
     const Management: AppMenuItem[] = [
         {
-            label: 'Branch Management',
+            label: 'ဆိုင်ခွဲ စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-building',
             items: [
-                { label: 'Branch List', icon: 'pi pi-fw pi-list', to: '/branch/list' },
-                { label: 'Add New Branch', icon: 'pi pi-fw pi-plus-circle', to: '/branch/new' }
+                { label: 'ဆိုင်ခွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/branch/list' },
+                { label: 'ဆိုင်ခွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/branch/new' }
             ]
         },
         {
-            label: 'Brand Management',
+            label: 'အမှတ်တံဆိပ် စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-tags',
             items: [
-                { label: 'Brand List', icon: 'pi pi-fw pi-tag', to: '/brand/list' },
-                { label: 'Add New Brand', icon: 'pi pi-fw pi-plus-circle', to: '/brand/new' }
+                { label: 'အမှတ်တံဆိပ်စာရင်း', icon: 'pi pi-fw pi-tag', to: '/brand/list' },
+                { label: 'အမှတ်တံဆိပ်အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/brand/new' }
             ]
         },
         {
-            label: 'Category Management',
+            label: 'အမျိုးအစား စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-sitemap',
             items: [
-                { label: 'Category List', icon: 'pi pi-fw pi-list', to: '/category/list' },
-                { label: 'Add New Category', icon: 'pi pi-fw pi-plus-circle', to: '/category/new' }
+                { label: 'အမျိုးအစားစာရင်း', icon: 'pi pi-fw pi-list', to: '/category/list' },
+                { label: 'အမျိုးအစားအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/category/new' }
             ]
         },
         {
-            label: 'Product Management',
+            label: 'ပစ္စည်း စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-box',
             items: [
-                { label: 'Product List', icon: 'pi pi-fw pi-list', to: '/product/list' },
-                { label: 'Add New Product', icon: 'pi pi-fw pi-plus-circle', to: '/product/new' }
+                { label: 'ပစ္စည်းစာရင်း', icon: 'pi pi-fw pi-list', to: '/product/list' },
+                { label: 'ပစ္စည်းအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product/new' }
             ]
         },
         {
-            label: 'Product Variant Management',
+            label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-clone',
             items: [
-                { label: 'Variant List', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
-                { label: 'Add New Variant', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' }
+                { label: 'အမျိုးကွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
+                { label: 'အမျိုးကွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' }
             ]
         },
         {
-            label: 'Purchase Management',
+            label: 'အဝယ် စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-shopping-cart',
             items: [
-                { label: 'Purchase Orders', icon: 'pi pi-fw pi-list', to: '/purchase-order/list' },
-                { label: 'New Purchase Order', icon: 'pi pi-fw pi-plus-circle', to: '/purchase-order/new' }
+                { label: 'အဝယ်အမှာစာများ', icon: 'pi pi-fw pi-list', to: '/purchase-order/list' },
+                { label: 'အဝယ်အမှာစာအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/purchase-order/new' }
             ]
         },
         {
-            label: 'Sales Management',
+            label: 'အရောင်း စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-wallet',
             items: [
-                { label: 'Sales List', icon: 'pi pi-fw pi-list', to: '/sale/list' },
-                { label: 'New Sale', icon: 'pi pi-fw pi-plus-circle', to: '/sale/new' }
+                { label: 'အရောင်းစာရင်း', icon: 'pi pi-fw pi-list', to: '/sale/list' },
+                { label: 'အရောင်းအသစ်', icon: 'pi pi-fw pi-plus-circle', to: '/sale/new' }
             ]
         },
         {
-            label: 'Stock Management',
+            label: 'ကုန်လက်ကျန် စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-database',
             items: [
-                { label: 'Stock List', icon: 'pi pi-fw pi-list', to: '/stock/list' },
-                { label: 'Stock Movements', icon: 'pi pi-fw pi-arrows-h', to: '/stock-movement/list' }
+                { label: 'ကုန်လက်ကျန်စာရင်း', icon: 'pi pi-fw pi-list', to: '/stock/list' },
+                { label: 'ကုန်လက်ကျန်အပြောင်းလဲများ', icon: 'pi pi-fw pi-arrows-h', to: '/stock-movement/list' }
             ]
         },
         {
-            label: 'Supplier Management',
+            label: 'ပေးသွင်းသူ/ဒိုင် စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-truck',
             items: [
-                { label: 'Supplier List', icon: 'pi pi-fw pi-list', to: '/supplier/list' },
-                { label: 'Add New Supplier', icon: 'pi pi-fw pi-plus-circle', to: '/supplier/new' }
+                { label: 'ပေးသွင်းသူ/ဒိုင် စာရင်း', icon: 'pi pi-fw pi-list', to: '/supplier/list' },
+                { label: 'ပေးသွင်းသူ/ဒိုင် အသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/supplier/new' }
             ]
         }
     ];
