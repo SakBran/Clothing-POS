@@ -7,6 +7,16 @@ export const Next_Link_Variable = 'product';
 //ဒါက Table မှာ ဘယ် column တွေကို ပြမလဲဆိုတာကို သတ်မှတ်တာပá
 export const TableColumns = ['productName', 'brand', 'description', 'category', 'isActive', 'id'];
 //ဒါက Form မှာသုံးတဲ့ Data Model ကို သတ်မှတ်တာပါ
+export interface ProductVariantForm {
+    sizeCode: string;
+    colorCode: string;
+    factoryBarcode?: string;
+    internalSKU: string;
+    costPrice: number;
+    sellingPrice: number;
+    isActive: string;
+}
+
 export interface FormData {
     productName: string;
     brandId: string;
@@ -14,4 +24,5 @@ export interface FormData {
     description: string;
     isActive: boolean;
     id: string;
+    variants: ProductVariantForm[];
 }
