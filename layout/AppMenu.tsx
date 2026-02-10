@@ -86,15 +86,15 @@ const AppMenu = () => {
                 { label: 'ပစ္စည်း စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/product' }
             ]
         },
-        {
-            label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု',
-            icon: 'pi pi-fw pi-clone',
-            items: [
-                { label: 'အမျိုးကွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
-                { label: 'အမျိုးကွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' },
-                { label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/product-variant' }
-            ]
-        },
+        // {
+        //     label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု',
+        //     icon: 'pi pi-fw pi-clone',
+        //     items: [
+        //         { label: 'အမျိုးကွဲစာရင်း', icon: 'pi pi-fw pi-list', to: '/product-variant/list' },
+        //         { label: 'အမျိုးကွဲအသစ်ထည့်ရန်', icon: 'pi pi-fw pi-plus-circle', to: '/product-variant/new' },
+        //         { label: 'ပစ္စည်းအမျိုးကွဲ စီမံခန့်ခွဲမှု လမ်းညွှန်', icon: 'pi pi-fw pi-file', to: '/tutorial/product-variant' }
+        //     ]
+        // },
         {
             label: 'အဝယ် စီမံခန့်ခွဲမှု',
             icon: 'pi pi-fw pi-shopping-cart',
