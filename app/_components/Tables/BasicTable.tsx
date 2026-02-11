@@ -4,6 +4,8 @@ import './style.css';
 import { PaginationType } from '../../_models/PaginationType';
 import NameConvert from '../../_services/NameConvert';
 import LoadingPage from '@/app/(main)/loading';
+import { InputText } from 'primereact/inputtext';
+import { Dropdown } from 'primereact/dropdown';
 
 //ဒီနေရမှာ Ant Designက Table သုံးလဲရတယ် Depedencyနဲနိုင်သမျှနဲအောင် လုပ်သာအကောင်းဆုံးပဲ
 //Fetch လုပ်တာလဲ ပြချင်တဲ့ Column ကို Display Dataထဲထည့်ပေးရုံပဲ
@@ -94,9 +96,53 @@ export const BasicTable: React.FC<PropsType> = ({
         setSortColumn(column);
         setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     };
+    const filterOptions = displayData
+        .filter((d) => d !== 'id')
+        .map((d) => ({
+            label: NameConvert(d),
+            value: d
+        }));
 
     return (
         <>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    marginBottom: '12px'
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '8px',
+                        alignItems: 'center'
+                    }}
+                >
+                    <Dropdown
+                        value={filterColumn}
+                        options={filterOptions}
+                        onChange={(e) => {
+                            setFilterColumn(e.value);
+                            setPageIndex(0);
+                        }}
+                        placeholder="Column"
+                        style={{ minWidth: '180px' }}
+                    />
+
+                    <span className="p-input-icon-left">
+                        <i className="pi pi-search" />
+                        <InputText
+                            value={filterQuery}
+                            onChange={(e) => {
+                                setFilterQuery(e.target.value);
+                                setPageIndex(0);
+                            }}
+                            placeholder="Search..."
+                        />
+                    </span>
+                </div>
+            </div>
             <div className="table-container">
                 <table id="basicTable">
                     <thead>
