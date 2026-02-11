@@ -33,7 +33,7 @@ const UserTableAction = ({ id }: Props) => {
         });
     };
     return (
-        <td>
+        <>
             <Link href={`/user/${id}`} style={{ cursor: 'pointer' }}>
                 Edit
             </Link>
@@ -47,7 +47,7 @@ const UserTableAction = ({ id }: Props) => {
             >
                 Delete
             </Link>
-        </td>
+        </>
     );
 };
 

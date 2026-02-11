@@ -34,7 +34,7 @@ const TableAction = ({ id }: Props) => {
         });
     };
     return (
-        <td>
+        <>
             <Link href={`/${Next_Link_Variable}/${id}`} style={{ cursor: 'pointer' }}>
                 Edit
             </Link>
@@ -48,7 +48,7 @@ const TableAction = ({ id }: Props) => {
             >
                 Delete
             </Link>
-        </td>
+        </>
     );
 };
 

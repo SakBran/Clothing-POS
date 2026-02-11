@@ -38,11 +38,20 @@ export const BasicTable: React.FC<PropsType> = ({
         filterColumn: '',
         filterQuery: ''
     };
-    const [loading, setloading] = useState<boolean>(false);
-    const [sortColumn, setSortColumn] = useState(displayData[1]);
-    const [sortDirection, setSortDirection] = useState('desc');
+    // parse displayData entries like "name:အမည်" => { field: "name", label: "အမည်" }
+    const parsedDisplay = displayData.map((d) => {
+        const parts = d.split(':');
+        return {
+            field: parts[0].trim(),
+            label: parts[1] ? parts.slice(1).join(':').trim() : undefined // support colons in label
+        };
+    });
 
-    const [filterColumn, setFilterColumn] = useState(displayData[0]);
+    const [loading, setloading] = useState<boolean>(false);
+    const [sortColumn, setSortColumn] = useState(parsedDisplay[1]?.field ?? parsedDisplay[0]?.field ?? '');
+    const [filterColumn, setFilterColumn] = useState(parsedDisplay[0]?.field ?? '');
+
+    const [sortDirection, setSortDirection] = useState('desc');
     const [filterQuery, setFilterQuery] = useState('');
 
     const [searchValue, setSearchValue] = useState('');
@@ -92,15 +101,17 @@ export const BasicTable: React.FC<PropsType> = ({
         };
         call();
     }, [fetch, url]);
+
     const handleSort = (column: string) => {
         setSortColumn(column);
         setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     };
-    const filterOptions = displayData
-        .filter((d) => d !== 'id')
-        .map((d) => ({
-            label: NameConvert(d),
-            value: d
+
+    const filterOptions = parsedDisplay
+        .filter((p) => p.field !== 'id')
+        .map((p) => ({
+            label: p.label ?? NameConvert(p.field),
+            value: p.field
         }));
 
     return (
@@ -145,7 +156,7 @@ export const BasicTable: React.FC<PropsType> = ({
             </div>
             <div className="table-container">
                 <table id="basicTable">
-                    <thead>
+                    {/* <thead>
                         <tr>
                             <td>No</td>
                             {displayData.map((display: string, i) => {
@@ -162,28 +173,43 @@ export const BasicTable: React.FC<PropsType> = ({
                             })}
                             {displayData.includes('id') && Permission !== 'Operator' && <td>Action</td>}
                         </tr>
+                    </thead> */}
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            {parsedDisplay.map((p, i) => {
+                                if (p.field !== 'id') {
+                                    return (
+                                        <th key={i} onClick={() => handleSort(p.field)}>
+                                            {p.label ?? NameConvert(p.field)}
+                                            {sortColumn === p.field && <span>{sortDirection === 'asc' ? '▲' : '▼'}</span>}
+                                        </th>
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })}
+                            {parsedDisplay.some((p) => p.field === 'id') && Permission !== 'Operator' && <th>Action</th>}
+                        </tr>
                     </thead>
 
                     {!loading && data && (
                         <tbody>
                             {data.data?.map((row, index) => {
-                                const data = displayData.map((display: string, i) => {
-                                    if (display !== 'id') {
-                                        const cellValue = row[display];
+                                const cells = parsedDisplay.map((p, i) => {
+                                    if (p.field !== 'id') {
+                                        const cellValue = row[p.field];
                                         return <td key={i}>{cellValue?.toString() ?? 'N/A'}</td>;
                                     } else {
-                                        return '';
+                                        return null;
                                     }
                                 });
 
                                 return (
-                                    <tr key={row['id']}>
+                                    <tr key={row['id'] ?? index}>
                                         <td>{index + 1 + pageIndex * pageSize}</td>
-                                        {data}
-                                        {/* <TableAction id={row['id']} /> */}
-
-                                        {/* {actionComponent && Permission !== 'Operator' ? actionComponent({ id: row['id'] }) : null} */}
-                                        {actionComponent && Permission !== 'Operator' && <>{React.createElement(actionComponent, { id: row['id'] })}</>}
+                                        {cells}
+                                        {actionComponent && Permission !== 'Operator' && <td>{React.createElement(actionComponent, { id: row['id'] })}</td>}
                                     </tr>
                                 );
                             })}
@@ -192,35 +218,34 @@ export const BasicTable: React.FC<PropsType> = ({
 
                     {loading && (
                         <tbody>
-                            {Array.from({ length: Math.min(pageSize, 100) }).map((_, rowIndex) => (
-                                <tr key={rowIndex}>
+                            <tr>
+                                <td>
+                                    <div className="skeleton skeleton-text">
+                                        <img src={`/layout/images/table-skeleton.svg`} alt="..." height="12" className="mr-2" />
+                                    </div>
+                                </td>
+
+                                {parsedDisplay.map((p, colIndex) => {
+                                    if (p.field !== 'id') {
+                                        return (
+                                            <td key={colIndex}>
+                                                <div className="skeleton skeleton-text">
+                                                    <img src={`/layout/images/table-skeleton.svg`} alt="..." height="12" className="mr-2" />
+                                                </div>
+                                            </td>
+                                        );
+                                    }
+                                    return null;
+                                })}
+
+                                {parsedDisplay.some((p) => p.field === 'id') && Permission !== 'Operator' && (
                                     <td>
-                                        <div className="skeleton skeleton-text">
+                                        <div className="skeleton skeleton-button">
                                             <img src={`/layout/images/table-skeleton.svg`} alt="..." height="12" className="mr-2" />
                                         </div>
                                     </td>
-                                    {displayData.map((display, colIndex) => {
-                                        if (display !== 'id') {
-                                            return (
-                                                <td key={colIndex}>
-                                                    <div className="skeleton skeleton-text">
-                                                        <img src={`/layout/images/table-skeleton.svg`} alt="..." height="12" className="mr-2" />
-                                                    </div>
-                                                </td>
-                                            );
-                                        } else {
-                                            return null;
-                                        }
-                                    })}
-                                    {displayData.includes('id') && Permission !== 'Operator' && (
-                                        <td>
-                                            <div className="skeleton skeleton-button">
-                                                <img src={`/layout/images/table-skeleton.svg`} alt="..." height="12" className="mr-2" />
-                                            </div>
-                                        </td>
-                                    )}
-                                </tr>
-                            ))}
+                                )}
+                            </tr>
                         </tbody>
                     )}
                 </table>
