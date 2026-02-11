@@ -36,7 +36,7 @@ const TableAction = ({ id }: Props) => {
     return (
         <>
             <Link href={`/${Next_Link_Variable}/${id}`} style={{ cursor: 'pointer' }}>
-                Edit
+                ပြင်ဆင်ရန်
             </Link>
             |
             <Link
@@ -46,7 +46,7 @@ const TableAction = ({ id }: Props) => {
                 }}
                 href={''}
             >
-                Delete
+                ​ဖျက်ရန်
             </Link>
         </>
     );

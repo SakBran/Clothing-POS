@@ -189,7 +189,7 @@ export const BasicTable: React.FC<PropsType> = ({
                                     return null;
                                 }
                             })}
-                            {parsedDisplay.some((p) => p.field === 'id') && Permission !== 'Operator' && <th>Action</th>}
+                            {parsedDisplay.some((p) => p.field === 'id') && Permission !== 'Operator' && <th>ဆောက်ရွက်ရန်</th>}
                         </tr>
                     </thead>
 
