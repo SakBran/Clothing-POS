@@ -176,11 +176,11 @@ export const BasicTable: React.FC<PropsType> = ({
                     </thead> */}
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>စဥ်</th>
                             {parsedDisplay.map((p, i) => {
                                 if (p.field !== 'id') {
                                     return (
-                                        <th key={i} onClick={() => handleSort(p.field)}>
+                                        <th key={i} onClick={() => handleSort(p.field)} style={{ cursor: 'pointer', userSelect: 'none' }}>
                                             {p.label ?? NameConvert(p.field)}
                                             {sortColumn === p.field && <span>{sortDirection === 'asc' ? '▲' : '▼'}</span>}
                                         </th>
