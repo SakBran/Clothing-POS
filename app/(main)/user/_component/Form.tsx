@@ -7,17 +7,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { classNames } from 'primereact/utils';
 import { Post, Put } from '@/app/_services/BasicHttpServices';
 import Swal from 'sweetalert2';
+import { API_Variable, Message_Variable, FormData } from '../constant';
 
-export interface FormData {
-    name: string;
-    email: string;
-    permission: string;
-    password: string;
-    isActive: string;
-    fullName: string;
-    id: string;
-}
-
+//Replace this for your actual data model
 const roles = [
     { label: 'Administrator', value: 'Administrator' },
     { label: 'Incharge', value: 'Incharge' },
@@ -29,7 +21,7 @@ const isActives = [
     { label: 'In-Active', value: '1' }
 ];
 
-const UserForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
+const DataEntryForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
     const {
         control,
         handleSubmit,
@@ -50,9 +42,9 @@ const UserForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
         const processedData = async () => {
             let response;
             if (data && data.id) {
-                response = await Put(`User`, data.id, data);
+                response = await Put(API_Variable, data.id, data);
             } else {
-                response = await Post('User', data);
+                response = await Post(API_Variable, data);
             }
 
             if (!response) {
@@ -69,13 +61,13 @@ const UserForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'User updated successfully'
+                    text: `${Message_Variable} updated successfully`
                 });
             } else {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'User created successfully'
+                    text: `${Message_Variable} created successfully`
                 });
             }
         };
@@ -135,4 +127,4 @@ const UserForm: React.FC<{ onLoadData?: FormData }> = ({ onLoadData }) => {
     );
 };
 
-export default UserForm;
+export default DataEntryForm;

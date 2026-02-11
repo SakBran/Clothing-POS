@@ -5,7 +5,7 @@ export const Message_Variable = 'Product';
 // ဒါက React ရဲ့ Router မှာသုံးတဲ့ Link ကို ဘယ်လိုခေါ်မလဲဆိုတာကို သတ်မှတ်တာပါ
 export const Next_Link_Variable = 'product';
 //ဒါက Table မှာ ဘယ် column တွေကို ပြမလဲဆိုတာကို သတ်မှတ်တာပá
-export const TableColumns = ['productName', 'brand', 'description', 'category', 'isActive', 'id'];
+export const TableColumns = ['productName:ပစ္စည်းအမည်', 'brand:အမှတ်တံဆိပ်', 'description:ဖော်ပြချက်', 'category:အမျိုးအစား', 'isActive:အတည်ပြုမှု', 'id'];
 //ဒါက Form မှာသုံးတဲ့ Data Model ကို သတ်မှတ်တာပါ
 export interface ProductVariantForm {
     sizeCode: string;

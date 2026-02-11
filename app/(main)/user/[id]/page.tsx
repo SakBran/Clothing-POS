@@ -1,9 +1,10 @@
 'use client';
 import React, { use, useEffect, useState } from 'react';
-import UserForm, { FormData } from '../_component/User';
 import { GetSingle } from '@/app/_services/BasicHttpServices';
 import Swal from 'sweetalert2';
 import LoadingPage from '../../loading';
+import DataEntryForm from '../_component/Form';
+import { API_Variable, FormData } from '../constant';
 
 interface Props {
     params: Promise<{ id: string }>;
@@ -11,13 +12,13 @@ interface Props {
 
 const Edit = ({ params }: Props) => {
     const unwrappedParams = use(params);
-    const [user, setUser] = useState<FormData | undefined>(undefined);
+    const [pageData, setPageData] = useState<FormData | undefined>(undefined);
     const [loading, setloading] = useState<boolean>(false);
 
     useEffect(() => {
         setloading(true);
-        const fetchUser = async () => {
-            const response = await GetSingle(`User/${unwrappedParams.id}`);
+        const fetchPageData = async () => {
+            const response = await GetSingle(`${API_Variable}/${unwrappedParams.id}`);
 
             if (!response) {
                 Swal.fire({
@@ -26,17 +27,17 @@ const Edit = ({ params }: Props) => {
                     text: 'Something went wrong!'
                 });
             }
-            setUser(response);
+            setPageData(response);
             setloading(false);
         };
-        fetchUser();
+        fetchPageData();
     }, [unwrappedParams]);
 
     return (
         <div className="col-12 xl:col-12">
             <div className="card">
                 {loading && <LoadingPage></LoadingPage>}
-                {!loading && user && <UserForm onLoadData={user} />}
+                {!loading && pageData && <DataEntryForm onLoadData={pageData} />}
             </div>
         </div>
     );

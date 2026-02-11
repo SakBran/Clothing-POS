@@ -6,15 +6,16 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Swal from 'sweetalert2';
+import { API_Variable, Next_Link_Variable, TableColumns } from '../constant';
 
 type Props = {
     id: string;
 };
 
-const UserTableAction = ({ id }: Props) => {
+const TableAction = ({ id }: Props) => {
     const router = useRouter();
 
-    const DeleteUser = async (id: string) => {
+    const DeleteData = async (id: string) => {
         // const response = await Delete('User', id);
         Swal.fire({
             title: 'Are you sure?',
@@ -24,7 +25,7 @@ const UserTableAction = ({ id }: Props) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 const deleteAction = async () => {
-                    const response = await Delete('User', id);
+                    const response = await Delete(API_Variable, id);
                     Swal.fire('Deleted!', 'Data is successfully deleted', 'success');
                     router.refresh();
                 };
@@ -34,14 +35,14 @@ const UserTableAction = ({ id }: Props) => {
     };
     return (
         <>
-            <Link href={`/user/${id}`} style={{ cursor: 'pointer' }}>
+            <Link href={`/${Next_Link_Variable}/${id}`} style={{ cursor: 'pointer' }}>
                 Edit
             </Link>
             |
             <Link
                 onClick={(e) => {
                     e.preventDefault();
-                    DeleteUser(id);
+                    DeleteData(id);
                 }}
                 href={''}
             >
@@ -51,7 +52,7 @@ const UserTableAction = ({ id }: Props) => {
     );
 };
 
-const transformUserData = (data: PaginationType): PaginationType => {
+const transformData = (data: PaginationType): PaginationType => {
     return {
         ...data,
         data: data.data.map((item) => ({
@@ -66,13 +67,13 @@ const page = () => {
         <div className="col-12 xl:col-12">
             <div className="card">
                 <BasicTable
-                    api={'User'}
-                    displayData={['name', 'password', 'permission', 'isActive', 'id']}
+                    api={API_Variable}
+                    displayData={TableColumns}
                     fetch={async (url) => {
                         const response = await Get(url);
-                        return transformUserData(response);
+                        return transformData(response);
                     }}
-                    actionComponent={UserTableAction}
+                    actionComponent={TableAction}
                 />
             </div>
         </div>

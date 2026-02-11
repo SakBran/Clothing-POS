@@ -1,11 +1,11 @@
 import React from 'react';
-import UserForm from '../_component/User';
+import DataEntryForm from '../_component/Form';
 
 const page = () => {
     return (
         <div className="col-12 xl:col-12">
             <div className="card">
-                <UserForm />
+                <DataEntryForm />
             </div>
         </div>
     );
